@@ -49,7 +49,8 @@ public class touchDetect : MonoBehaviour {
 
 				if (hit.transform.name == "IceCream") 
 				{
-					StartCoroutine(GetText());
+					StartCoroutine (GetText ());
+					//StartCoroutine(Upload());
 				}
 					
 			}
@@ -58,18 +59,57 @@ public class touchDetect : MonoBehaviour {
 	}
 
 	IEnumerator GetText() {
-		UnityWebRequest www = UnityWebRequest.Get("http://app.mindseed.in:9080/books");
-		yield return www.SendWebRequest();
+		UnityWebRequest www = UnityWebRequest.Get("https://reqres.in/api/users?page=2");
+		yield return www.SendWebRequest();	
 
 		if(www.isNetworkError || www.isHttpError) {
 			Debug.Log(www.error);
 		}
 		else {
 			// Show results as text
-			Debug.Log(www.downloadHandler.text);
+			string json1 = www.downloadHandler.text;
+			JsonOutput op1 = JsonUtility.FromJson<JsonOutput> (json1);
+			
+
+			Debug.Log (op1.data[0].first_name);
 
 			// Or retrieve results as binary data
 			//byte[] results = www.downloadHandler.data;
+			//Debug.Log(results [0]);
 		}
+	}
+
+	IEnumerator Upload() {
+		WWWForm form = new WWWForm();
+		form.AddField("name", "sachin");
+
+		UnityWebRequest www = UnityWebRequest.Post("https://reqres.in/api/users", form);
+		yield return www.SendWebRequest();
+
+		if(www.isNetworkError || www.isHttpError) {
+			Debug.Log(www.error);
+		}
+		else {
+			Debug.Log("Form upload complete!");
+			Debug.Log (www.downloadHandler.text);
+		}
+	}
+	[System.Serializable]
+	public class data
+	{
+		public string id;
+		public string first_name;
+		public string last_name;
+		public string avatar;
+	}
+		
+	[System.Serializable]
+	public class JsonOutput
+	{
+		public string  page;
+		public string  per_page;
+		public string  total;
+		public string  total_pages;
+		public List<data> data;
 	}
 }

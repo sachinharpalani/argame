@@ -51,8 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\checkAnswer.cs" />
      <Compile Include="Assets\GameScene1Script.cs" />
      <Compile Include="Assets\GameScene2Script.cs" />
+     <Compile Include="Assets\scaleToCamera.cs" />
      <Compile Include="Assets\textLabel.cs" />
      <Compile Include="Assets\touchDetect.cs" />
      <Compile Include="Assets\webCamScript.cs" />
