@@ -55,7 +55,13 @@
      <Compile Include="Assets\GameScene1Script.cs" />
      <Compile Include="Assets\GameScene2Script.cs" />
      <Compile Include="Assets\scaleToCamera.cs" />
+     <Compile Include="Assets\SmartTimersManager\ScriptExamples\BlueLightFlicker.cs" />
+     <Compile Include="Assets\SmartTimersManager\ScriptExamples\RedLightFlicker.cs" />
+     <Compile Include="Assets\SmartTimersManager\TimerManager\GUI_TimersList.cs" />
+     <Compile Include="Assets\SmartTimersManager\TimerManager\Timer.cs" />
+     <Compile Include="Assets\SmartTimersManager\TimerManager\TimersManager.cs" />
      <Compile Include="Assets\textLabel.cs" />
+     <Compile Include="Assets\timer.cs" />
      <Compile Include="Assets\touchDetect.cs" />
      <Compile Include="Assets\webCamScript.cs" />
  <Reference Include="Facebook.Unity.Settings">
